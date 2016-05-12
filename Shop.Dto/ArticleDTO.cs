@@ -13,5 +13,7 @@ namespace Shop.Dto
         public string ArticleName { get; set; }
 
         public string ArticleDescription { get; set; }
+
+        public string ArticleValue { get; set; }
     }
 }
