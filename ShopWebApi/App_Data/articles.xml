@@ -4,250 +4,300 @@
     <Id>1</Id>
     <Name>Article 1</Name>
     <Description>Description of the Article 1</Description>
+    <Value>3.53</Value>
   </Article>
   <Article>
     <Id>2</Id>
     <Name>Article 2</Name>
     <Description>Description of the Article 2</Description>
+    <Value>111.15</Value>
   </Article>
   <Article>
     <Id>3</Id>
     <Name>Article 3</Name>
     <Description>Description of the Article 3</Description>
+    <Value>130.3</Value>
   </Article>
   <Article>
     <Id>4</Id>
     <Name>Article 4</Name>
     <Description>Description of the Article 4</Description>
+    <Value>10</Value>
   </Article>
   <Article>
     <Id>5</Id>
     <Name>Article 5</Name>
     <Description>Description of the Article 5</Description>
+    <Value>1003.68</Value>
   </Article>
   <Article>
     <Id>6</Id>
     <Name>Article 6</Name>
     <Description>Description of the Article 6</Description>
+    <Value>28</Value>
   </Article>
   <Article>
     <Id>7</Id>
     <Name>Article 7</Name>
     <Description>Description of the Article 7</Description>
+    <Value>39.85</Value>
   </Article>
   <Article>
     <Id>8</Id>
     <Name>Article 8</Name>
     <Description>Description of the Article 8</Description>
+    <Value>250</Value>
   </Article>
   <Article>
     <Id>9</Id>
     <Name>Article 9</Name>
     <Description>Description of the Article 9</Description>
+    <Value>375</Value>
   </Article>
   <Article>
     <Id>10</Id>
     <Name>Article 10</Name>
     <Description>Description of the Article 10</Description>
+    <Value>896.21</Value>
   </Article>
   <Article>
     <Id>11</Id>
     <Name>Article 11</Name>
     <Description>Description of the Article 11</Description>
+    <Value>122.3</Value>
   </Article>
   <Article>
     <Id>12</Id>
     <Name>Article 12</Name>
     <Description>Description of the Article 12</Description>
+    <Value>1287.69</Value>
   </Article>
   <Article>
     <Id>13</Id>
     <Name>Article 13</Name>
     <Description>Description of the Article 13</Description>
+    <Value>57.3</Value>
   </Article>
   <Article>
     <Id>14</Id>
     <Name>Article 14</Name>
     <Description>Description of the Article 14</Description>
+    <Value>47.6</Value>
   </Article>
   <Article>
     <Id>15</Id>
     <Name>Article 15</Name>
     <Description>Description of the Article 15</Description>
+    <Value>250</Value>
   </Article>
   <Article>
     <Id>16</Id>
     <Name>Article 16</Name>
     <Description>Description of the Article 16</Description>
+    <Value>600</Value>
   </Article>
   <Article>
     <Id>17</Id>
     <Name>Article 17</Name>
     <Description>Description of the Article 17</Description>
+    <Value>156.15</Value>
   </Article>
   <Article>
     <Id>18</Id>
     <Name>Article 18</Name>
     <Description>Description of the Article 18</Description>
+    <Value>18.54</Value>
   </Article>
   <Article>
     <Id>19</Id>
     <Name>Article 19</Name>
     <Description>Description of the Article 19</Description>
+    <Value>77.65</Value>
   </Article>
   <Article>
     <Id>20</Id>
     <Name>Article 20</Name>
     <Description>Description of the Article 20</Description>
+    <Value>12.47</Value>
   </Article>
   <Article>
     <Id>21</Id>
     <Name>Article 21</Name>
     <Description>Description of the Article 21</Description>
+    <Value>12.33</Value>
   </Article>
   <Article>
     <Id>22</Id>
     <Name>Article 22</Name>
     <Description>Description of the Article 22</Description>
+    <Value>47.48</Value>
   </Article>
   <Article>
     <Id>23</Id>
     <Name>Article 23</Name>
     <Description>Description of the Article 23</Description>
+    <Value>15.12</Value>
   </Article>
   <Article>
     <Id>24</Id>
     <Name>Article 24</Name>
     <Description>Description of the Article 24</Description>
+    <Value>89.65</Value>
   </Article>
   <Article>
     <Id>25</Id>
     <Name>Article 25</Name>
     <Description>Description of the Article 25</Description>
+    <Value>13.33</Value>
   </Article>
   <Article>
     <Id>26</Id>
     <Name>Article 26</Name>
     <Description>Description of the Article 26</Description>
+    <Value>147.65</Value>
   </Article>
   <Article>
     <Id>27</Id>
     <Name>Article 27</Name>
     <Description>Description of the Article 27</Description>
+    <Value>27.49</Value>
   </Article>
   <Article>
     <Id>28</Id>
     <Name>Article 28</Name>
     <Description>Description of the Article 28</Description>
+    <Value>133.48</Value>
   </Article>
   <Article>
     <Id>29</Id>
     <Name>Article 29</Name>
     <Description>Description of the Article 29</Description>
+    <Value>1.99</Value>
   </Article>
   <Article>
     <Id>30</Id>
     <Name>Article 30</Name>
     <Description>Description of the Article 30</Description>
+    <Value>12</Value>
   </Article>
   <Article>
     <Id>31</Id>
     <Name>Article 31</Name>
     <Description>Description of the Article 31</Description>
+    <Value>17.5</Value>
   </Article>
   <Article>
     <Id>32</Id>
     <Name>Article 32</Name>
     <Description>Description of the Article 32</Description>
+    <Value>15.98</Value>
   </Article>
   <Article>
     <Id>33</Id>
     <Name>Article 33</Name>
     <Description>Description of the Article 33</Description>
+    <Value>99.99</Value>
   </Article>
   <Article>
     <Id>34</Id>
     <Name>Article 34</Name>
     <Description>Description of the Article 34</Description>
+    <Value>789.99</Value>
   </Article>
   <Article>
     <Id>35</Id>
     <Name>Article 35</Name>
     <Description>Description of the Article 35</Description>
+    <Value>35.21</Value>
   </Article>
   <Article>
     <Id>36</Id>
     <Name>Article 36</Name>
     <Description>Description of the Article 36</Description>
+    <Value>32.38</Value>
   </Article>
   <Article>
     <Id>37</Id>
     <Name>Article 37</Name>
     <Description>Description of the Article 37</Description>
+    <Value>47.3</Value>
   </Article>
   <Article>
     <Id>38</Id>
     <Name>Article 38</Name>
     <Description>Description of the Article 38</Description>
+    <Value>78.89</Value>
   </Article>
   <Article>
     <Id>39</Id>
     <Name>Article 39</Name>
     <Description>Description of the Article 39</Description>
+    <Value>12.12</Value>
   </Article>
   <Article>
     <Id>40</Id>
     <Name>Article 40</Name>
     <Description>Description of the Article 40</Description>
+    <Value>1330.3</Value>
   </Article>
   <Article>
     <Id>41</Id>
     <Name>Article 41</Name>
     <Description>Description of the Article 41</Description>
+    <Value>77.96</Value>
   </Article>
   <Article>
     <Id>42</Id>
     <Name>Article 42</Name>
     <Description>Description of the Article 42</Description>
+    <Value>130.42</Value>
   </Article>
   <Article>
     <Id>43</Id>
     <Name>Article 43</Name>
     <Description>Description of the Article 43</Description>
+    <Value>147.89</Value>
   </Article>
   <Article>
     <Id>44</Id>
     <Name>Article 44</Name>
     <Description>Description of the Article 44</Description>
+    <Value>29.29</Value>
   </Article>
   <Article>
     <Id>45</Id>
     <Name>Article 45</Name>
     <Description>Description of the Article 45</Description>
+    <Value>78.3</Value>
   </Article>
   <Article>
     <Id>46</Id>
     <Name>Article 46</Name>
     <Description>Description of the Article 46</Description>
+    <Value>10.3</Value>
   </Article>
   <Article>
     <Id>47</Id>
     <Name>Article 47</Name>
     <Description>Description of the Article 47</Description>
+    <Value>24.07</Value>
   </Article>
   <Article>
     <Id>48</Id>
     <Name>Article 48</Name>
     <Description>Description of the Article 48</Description>
+    <Value>43</Value>
   </Article>
   <Article>
     <Id>49</Id>
     <Name>Article 49</Name>
     <Description>Description of the Article 49</Description>
+    <Value>10.28</Value>
   </Article>
   <Article>
     <Id>50</Id>
     <Name>Article 50</Name>
     <Description>Description of the Article 50</Description>
+    <Value>130.3</Value>
   </Article>
 </ArrayOfArticle>
