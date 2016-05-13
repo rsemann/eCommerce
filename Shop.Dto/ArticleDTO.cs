@@ -14,6 +14,6 @@ namespace Shop.Dto
 
         public string ArticleDescription { get; set; }
 
-        public string ArticleValue { get; set; }
+        public float ArticleValue { get; set; }
     }
 }
