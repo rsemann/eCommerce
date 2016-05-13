@@ -26,9 +26,13 @@ namespace Webshop
             bundles.Add(new ScriptBundle("~/bundles/functions").Include(
                       "~/Scripts/functions.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/toastr").Include(
+                "~/Scripts/toastr.min.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/toastr.min.css"));
 
             //BundleTable.EnableOptimizations = false;
         }
