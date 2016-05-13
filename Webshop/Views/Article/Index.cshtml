@@ -1,46 +1,71 @@
 ﻿@model IEnumerable<Webshop.Models.ArticleModel>
 
+@{
+    int pageIndex = ViewBag.pageIndex;
+    int pageCount = ViewBag.pageCount;    
+}
+
 <h2>Articles</h2>
 <hr />
 
-<div class="container">
-    <table class="table table-striped">
-        <tr>
-            <th style="width: 20px"></th>
-            <th data-sortable="true" data-field="name">
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th data-sortable="true" data-field="value">
-                @Html.DisplayNameFor(model => model.Value)
-            </th>
-            <th data-sortable="true" data-field="dataCriacao">
-                @Html.DisplayNameFor(model => model.Quantity)
-            </th>
-            <th style="width: 120px"></th>
-        </tr>
-        @foreach (var item in Model)
-        {
-            <tr style="cursor: pointer" onclick="showModal(this, @item.Id);">
-                <td>
-                    <a class="btn" data-url="@Url.Action("Details")" style="cursor: pointer" onclick="showModal(this, @item.Id);">
-                        <span class="glyphicon glyphicon-search"></span>
-                    </a>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Value)
-                </td>
-                <td>
-                    @Html.EditorFor(modelItem => item.Quantity, new { htmlAttributes = new { @class = "form-control", min = 0 } })
-                </td>
-                <td>
-                    <a class="btn" data-url="@Url.Action("Details")" style="cursor: pointer" onclick="showModal(this, @item.Id);">
-                        <span class="glyphicon glyphicon-shopping-cart"></span>Add to cart
-                    </a>
-                </td>
+@using (Html.BeginForm("Page", "Article", FormMethod.Post))
+{
+    <div class="container">
+        @Html.Hidden("pageCount", pageCount)
+        @Html.Hidden("pageIndex", pageIndex)
+
+        <table class="table table-striped">
+            <tr>
+                <th style="width: 20px"></th>
+                <th data-sortable="true" data-field="name">
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th data-sortable="true" data-field="value">
+                    @Html.DisplayNameFor(model => model.Value)
+                </th>
+                <th data-sortable="true" data-field="dataCriacao">
+                    @Html.DisplayNameFor(model => model.Quantity)
+                </th>
+                <th style="width: 120px"></th>
             </tr>
-        }
-    </table>
-</div>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <a class="btn" data-url="@Url.Action("Details")" style="cursor: pointer" onclick="showModal(this, @item.Id);">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Value)
+                    </td>
+                    <td>
+                        @Html.EditorFor(modelItem => item.Quantity, new { htmlAttributes = new { @class = "form-control", min = 0 } })
+                    </td>
+                    <td>
+                        <a class="btn" style="cursor: pointer" onclick="addCart(this, @item.Id);">
+                            <span class="glyphicon glyphicon-shopping-cart"></span>Add to cart
+                        </a>
+                    </td>
+                </tr>
+            }
+        </table>
+        <hr/>
+        <div>
+            @for (var i = 0; i < pageCount; i++)
+            {
+                if (i == pageIndex)
+                {
+                    <span class="btn btn-info">@(i + 1)</span>
+                }
+                else
+                {
+                    <a class="btn btn-default nextPage" href="#" data-pageindex="@i">@(i + 1)</a>
+                }
+            }
+        </div>
+    </div>
+}
