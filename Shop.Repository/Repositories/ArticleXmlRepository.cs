@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Xml;
 using Shop.Dto;
@@ -10,15 +11,13 @@ namespace Shop.Repository.Repositories
 {
     public class ArticleXmlRepository : IRepository<ArticleDTO>
     {
-        public string _path;
         private static List<ArticleDTO> _articles = new List<ArticleDTO>();
 
-        //public ArticleXmlRepository(string path)
-        //{
-        //    _path = path;
-        //    if (_articles.Count > 0)
-        //        LoadArticlesFromXMl();
-        //}
+        public ArticleXmlRepository()
+        {
+            if (_articles.Count <= 0)
+                LoadArticlesFromXMl();
+        }
 
         public IEnumerable<ArticleDTO> GetAll()
         {
@@ -48,7 +47,7 @@ namespace Shop.Repository.Repositories
         private void LoadArticlesFromXMl()
         {
             XmlDocument doc = new XmlDocument();
-            doc.Load(string.Format(@"{0}\articles.xml", _path));
+            doc.Load(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "App_Data/articles.xml"));
 
             if (doc.DocumentElement != null)
             {
