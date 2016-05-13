@@ -17,6 +17,7 @@ namespace Webshop.Models
 
         public float Value { get; set; }
 
+        [Range(1, Int32.MaxValue)]
         public int Quantity { get; set; }
     }
 }
