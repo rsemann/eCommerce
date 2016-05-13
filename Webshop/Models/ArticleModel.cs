@@ -19,5 +19,7 @@ namespace Webshop.Models
 
         [Range(1, Int32.MaxValue)]
         public int Quantity { get; set; }
+
+        public string Image { get; set; }
     }
 }

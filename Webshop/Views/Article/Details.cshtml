@@ -7,6 +7,10 @@
 
 <div class="modal-body">
     <dl class="dl-horizontal">
+        
+        <dd>
+            <img src="@Model.Image" alt="article" height="192" width="192"/>
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
@@ -22,7 +26,7 @@
         <dd>
             @Html.DisplayFor(model => model.Value)
         </dd>
-
+        
         <dt>
             @Html.DisplayNameFor(model => model.Description)
         </dt>
@@ -30,9 +34,20 @@
         <dd>
             @Html.DisplayFor(model => model.Description)
         </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.EditorFor(modelItem => modelItem.Quantity)
+        </dd>
     </dl>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-success" data-dismiss="modal" onclick="addCart(@Model.Id, @Model.Quantity);">
+        <span class="glyphicon glyphicon-shopping-cart"></span>Add to cart
+    </button>
 </div>
 

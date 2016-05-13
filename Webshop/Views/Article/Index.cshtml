@@ -2,7 +2,8 @@
 
 @{
     int pageIndex = ViewBag.pageIndex;
-    int pageCount = ViewBag.pageCount;    
+    int pageCount = ViewBag.pageCount;
+    
 }
 
 <h2>Articles</h2>
@@ -43,10 +44,10 @@
                         @Html.DisplayFor(modelItem => item.Value)
                     </td>
                     <td>
-                        @Html.EditorFor(modelItem => item.Quantity, new { htmlAttributes = new { @class = "form-control", min = 0 } })
+                        @Html.EditorFor(modelItem => item.Quantity)
                     </td>
                     <td>
-                        <a class="btn" style="cursor: pointer" onclick="addCart(this, @item.Id);">
+                        <a class="btn btn-success" style="cursor: pointer" onclick="addCart(@item.Id, @item.Quantity);">
                             <span class="glyphicon glyphicon-shopping-cart"></span>Add to cart
                         </a>
                     </td>

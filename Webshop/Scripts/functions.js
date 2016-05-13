@@ -7,7 +7,6 @@ function showModal(self, id) {
         type: "GET",
         cache: false,
         success: function (result) {
-            showalert("oi", "error");
             var div = document.createElement("div");
             document.body.appendChild(div);
             $(div).html(result);
@@ -19,15 +18,21 @@ function showModal(self, id) {
     });
 }
 
-function addCart(self, id) {
-    showalert("Article addded", "success");
+function addCart(id, quantity) {
+    if (quantity <= 0)
+        showalert("Quantity must be 1 or more.", "warning");
+    else {
+        showalert("Article addded", "success");
+        //$("#cartArticles").val($("#cartArticles").val() + 1);
+        //$("#cartArticles").text($("#cartArticles").val() + 1);
+    }
 }
 
 
 function showalert(message, type) {
     toastr[type](message);
     toastr.options = {
-        "closeButton": false,
+        "closeButton": true,
         "debug": false,
         "newestOnTop": false,
         "progressBar": false,
