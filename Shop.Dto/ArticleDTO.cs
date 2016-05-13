@@ -15,5 +15,7 @@ namespace Shop.Dto
         public string ArticleDescription { get; set; }
 
         public float ArticleValue { get; set; }
+
+        public string ArticleImage { get; set; }
     }
 }
