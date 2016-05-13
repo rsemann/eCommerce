@@ -181,6 +181,16 @@
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\image-1.jpg" />
+    <Content Include="Content\Images\image-10.jpg" />
+    <Content Include="Content\Images\image-2.jpg" />
+    <Content Include="Content\Images\image-3.jpg" />
+    <Content Include="Content\Images\image-4.jpg" />
+    <Content Include="Content\Images\image-5.jpg" />
+    <Content Include="Content\Images\image-6.jpg" />
+    <Content Include="Content\Images\image-7.jpg" />
+    <Content Include="Content\Images\image-8.jpg" />
+    <Content Include="Content\Images\image-9.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
