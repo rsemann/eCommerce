@@ -46,7 +46,7 @@ namespace Shop.Repository.Repositories
 
         private void LoadArticlesFromXMl()
         {
-            XmlDocument doc = new XmlDocument();
+            var doc = new XmlDocument();
             doc.Load(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "App_Data/articles.xml"));
 
             if (doc.DocumentElement != null)
@@ -60,7 +60,8 @@ namespace Shop.Repository.Repositories
                         ArticleId = Convert.ToInt32(node.SelectSingleNode("Id").InnerText),
                         ArticleName = node.SelectSingleNode("Name").InnerText,
                         ArticleDescription = node.SelectSingleNode("Description").InnerText,
-                        ArticleValue = Convert.ToSingle(node.SelectSingleNode("Value").InnerText, CultureInfo.InvariantCulture)
+                        ArticleValue = Convert.ToSingle(node.SelectSingleNode("Value").InnerText, CultureInfo.InvariantCulture),
+                        ArticleImage = node.SelectSingleNode("Image").InnerText
                     });
                 }
             }
