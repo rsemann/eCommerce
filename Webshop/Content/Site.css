@@ -40,3 +40,17 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+.navbar-collapse {
+    float: right;
+}
+
+#cartArticles {
+    color: white;
+    line-height: 15px;
+}
+
+.cart {
+    font-size: 2em;
+    cursor: pointer;
+}

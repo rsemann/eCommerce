@@ -21,11 +21,7 @@
 
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a class="glyphicon glyphicon-shopping-cart cart"></a></li>
-                    <li>
-                        
-                        <span style="color:white" id="cartArticles">0</span>
-                    </li>
+                    <li>@Html.ActionLink("0", "Checkout", "Cart", null, new { @class = "glyphicon glyphicon-shopping-cart cart", id = "cartArticles" })</li>
                 </ul>
 
                 @if (Request.IsAuthenticated)

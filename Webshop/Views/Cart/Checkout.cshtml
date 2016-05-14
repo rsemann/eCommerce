@@ -1,0 +1,63 @@
+﻿@model Shop.Models.CheckoutModel
+
+@{
+    ViewBag.Title = "Checkout";
+}
+
+<h2>Checkout</h2>
+<hr />
+
+<div class="container">
+    
+    <table class="table table-striped table-condensed" id="articlesGrid">
+        <thead>
+            <tr>
+                <th style="width: 20px"></th>
+                <th data-sortable="true" data-field="name">
+                    @Html.DisplayNameFor(model => model.Articles[0].Name)
+                </th>
+                <th data-sortable="true" data-field="value">
+                    @Html.DisplayNameFor(model => model.Articles[0].Value)
+                </th>
+                <th data-sortable="true" data-field="dataCriacao">
+                    @Html.DisplayNameFor(model => model.Articles[0].Quantity)
+                </th>
+                <th style="width: 120px"></th>
+            </tr>
+        </thead>
+        <tbody/>
+        @foreach (var item in Model.Articles)
+        {
+            <tr>
+                <td>
+                    <a class="btn" data-url="@Url.Action("Details","Article")" style="cursor: pointer" onclick="showModal(this, @item.Id);">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Value)
+                </td>
+                <td>
+                    @Html.EditorFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    <a href="#" class="btn btn-danger" data-url="@Url.Action("RemoveArticle", "Cart")" style="cursor: pointer" onclick="javascript:addCart(this, @item.Id, @item.Quantity);">
+                        <span class="glyphicon glyphicon-shopping-cart"></span>Remove from cart
+                    </a>
+                </td>
+            </tr>
+        }
+
+        <tr><td>SubTotal</td><td>@Model.SubTotal</td></tr>
+        <tr><td>SubTotal</td><td>@Model.TotalVAT</td></tr>
+        <tr><td>SubTotal</td><td>@Model.Total</td></tr>
+    </table>
+    <hr/>
+
+    <button class="btn btn-success" data-dismiss="modal" data-url="@Url.Action("AddArticle", "Cart")" style="cursor: pointer">
+        <span class="glyphicon glyphicon-check"></span> Checkout
+    </button>
+</div>

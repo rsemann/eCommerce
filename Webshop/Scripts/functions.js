@@ -18,25 +18,62 @@ function showModal(self, id) {
     });
 }
 
-function addCart(id, quantity) {
-    if (quantity <= 0)
-        showalert("Quantity must be 1 or more.", "warning");
-    else {
-        showalert("Article addded", "success");
-        //$("#cartArticles").val($("#cartArticles").val() + 1);
-        //$("#cartArticles").text($("#cartArticles").val() + 1);
-    }
+function getArticles(pageIndex, pageCount) {
+    $.ajax(
+    {
+        url: "./Article/Page" + "?pageindex=" + pageIndex + "&pageCount=" + pageCount,
+        type: "GET",
+        cache: false,
+        success: function (result) {
+            $("#articlesGrid > tbody").html(result);
+            $("[id^=page-]").removeClass("btn-info").addClass("btn-default");
+            $("#page-" + pageIndex).removeClass("btn-default").addClass("btn-info");
+        },
+        error: function (error) {
+            showalert(error.statusText, "error");
+        }
+    });
 }
 
+function addCart(self, articleId) {
+    var quantity = $("#article-" + articleId).val();
+    $.ajax(
+    {
+        url: $(self).data("url") + "?id=" + articleId + "&quantity=" + quantity,
+        type: "GET",
+        cache: false,
+        success: function (result) {
+            showalert(result.Message, result.TypeMessage);
+            totalCart();
+        },
+        error: function (error) {
+            showalert(error.statusText, "error");
+        }
+    });
+}
+
+function totalCart() {
+    $.ajax(
+    {
+        url: "./Cart/TotalArticlesCart",
+        type: "GET",
+        cache: false,
+        success: function (result) {
+            $("#cartArticles").html(result);
+        },
+        error: function (error) {
+            showalert(error.statusText, "error");
+        }
+    });
+}
 
 function showalert(message, type) {
-    toastr[type](message);
     toastr.options = {
         "closeButton": true,
         "debug": false,
         "newestOnTop": false,
         "progressBar": false,
-        "positionClass": "toast-top-center",
+        "positionClass": "toast-top-right",
         "preventDuplicates": false,
         "onclick": null,
         "showDuration": "300",
@@ -48,11 +85,7 @@ function showalert(message, type) {
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
     }
+    toastr[type](message);
 }
 
-$(".nextPage").click(function (evt) {
-    var pageindex = $(evt.target).data("pageindex");
-    $("#pageIndex").val(pageindex);
-    evt.preventDefault();
-    $("form").submit();
-});
+totalCart();

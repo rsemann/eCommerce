@@ -1,4 +1,4 @@
-﻿@model Webshop.Models.ArticleModel
+﻿@model Shop.Models.ArticleModel
 
 @{
     ViewBag.Title = "Details";
@@ -40,13 +40,13 @@
         </dt>
 
         <dd>
-            @Html.EditorFor(modelItem => modelItem.Quantity)
+           @Html.TextBoxFor(model => model.Quantity, new { id = "article-" + Model.Id, type = "number", min = 1 })
         </dd>
     </dl>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-    <button type="button" class="btn btn-success" data-dismiss="modal" onclick="addCart(@Model.Id, @Model.Quantity);">
+    <button class="btn btn-success" data-dismiss="modal" data-url="@Url.Action("AddArticle", "Cart")" style="cursor: pointer" onclick="addCart(this, @Model.Id);return false;">
         <span class="glyphicon glyphicon-shopping-cart"></span>Add to cart
     </button>
 </div>

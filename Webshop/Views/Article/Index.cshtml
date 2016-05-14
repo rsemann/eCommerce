@@ -1,21 +1,19 @@
-﻿@model IEnumerable<Webshop.Models.ArticleModel>
+﻿@model Shop.Models.ArticleModel
 
 @{
     int pageIndex = ViewBag.pageIndex;
     int pageCount = ViewBag.pageCount;
-    
 }
 
 <h2>Articles</h2>
 <hr />
 
-@using (Html.BeginForm("Page", "Article", FormMethod.Post))
-{
-    <div class="container">
-        @Html.Hidden("pageCount", pageCount)
-        @Html.Hidden("pageIndex", pageIndex)
+<div class="container">
+    @Html.Hidden("pageCount", pageCount)
+    @Html.Hidden("pageIndex", pageIndex)
 
-        <table class="table table-striped">
+    <table class="table table-striped table-condensed" id="articlesGrid">
+        <thead>
             <tr>
                 <th style="width: 20px"></th>
                 <th data-sortable="true" data-field="name">
@@ -29,44 +27,21 @@
                 </th>
                 <th style="width: 120px"></th>
             </tr>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        <a class="btn" data-url="@Url.Action("Details")" style="cursor: pointer" onclick="showModal(this, @item.Id);">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </a>
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Value)
-                    </td>
-                    <td>
-                        @Html.EditorFor(modelItem => item.Quantity)
-                    </td>
-                    <td>
-                        <a class="btn btn-success" style="cursor: pointer" onclick="addCart(@item.Id, @item.Quantity);">
-                            <span class="glyphicon glyphicon-shopping-cart"></span>Add to cart
-                        </a>
-                    </td>
-                </tr>
-            }
-        </table>
-        <hr/>
-        <div>
-            @for (var i = 0; i < pageCount; i++)
-            {
-                if (i == pageIndex)
-                {
-                    <span class="btn btn-info">@(i + 1)</span>
-                }
-                else
-                {
-                    <a class="btn btn-default nextPage" href="#" data-pageindex="@i">@(i + 1)</a>
-                }
-            }
-        </div>
+        </thead>
+        <tbody />
+    </table>
+    <hr />
+    <div>
+        @for (var i = 0; i < pageCount; i++)
+        {
+            <a class="btn" id="page-@i" onclick="javascript:getArticles(@i, @pageCount);">@(i + 1)</a>
+        }
     </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        getArticles(0,@pageCount);
+    </script>
 }

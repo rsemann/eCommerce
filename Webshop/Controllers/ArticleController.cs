@@ -3,8 +3,8 @@ using System.Configuration;
 using System.Linq;
 using System.Web.Mvc;
 using Shop.Dto;
+using Shop.Models;
 using WebGrease.Css.Extensions;
-using Webshop.Models;
 
 namespace Webshop.Controllers
 {
@@ -14,23 +14,15 @@ namespace Webshop.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var articles = new List<ArticleModel>();
             IEnumerable<ArticleDTO> articlesDto = WebApiClient<ArticleDTO>.GetAll("api/article");
-            articlesDto.ForEach(a => articles.Add(new ArticleModel
-            {
-                Id = a.ArticleId,
-                Name = a.ArticleName,
-                Value = a.ArticleValue,
-                Quantity = 1
-            }));
             
             ViewBag.PageIndex = 0;
-            ViewBag.PageCount = articles.Count / 10;
+            ViewBag.PageCount = articlesDto.Count() / 10;
 
-            return View(articles.Take(10));
+            return View(new ArticleModel());
         }
 
-        [HttpPost]
+        [HttpGet]
         public ActionResult Page(int pageIndex, int pageCount)
         {
             var articles = new List<ArticleModel>();
@@ -46,7 +38,7 @@ namespace Webshop.Controllers
             ViewBag.PageIndex = pageIndex;
             ViewBag.PageCount = pageCount;
 
-            return View("Index", articles.Skip(pageIndex * 10).Take(10));
+            return View("_PartialArticles", articles.Skip(pageIndex * 10).Take(10));
         }
 
         [HttpGet]

@@ -1,10 +1,13 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
+using System.Threading.Tasks;
 using System.Web;
-using Newtonsoft.Json;
+using System.Net.Http.Formatting;
 
 namespace Webshop
 {
@@ -52,6 +55,26 @@ namespace Webshop
                     var jsonString = response.Content.ReadAsStringAsync();
                     jsonString.Wait();
                     return JsonConvert.DeserializeObject<T>(jsonString.Result);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
+
+        public static async Task<TResult> Post<TResult>(string uri, T content)
+        {
+            try
+            {
+                using (var client = GetClient())
+                {
+                    var response = await client.PostAsJsonAsync(uri, content);
+                    response.EnsureSuccessStatusCode();
+
+                    return await response.Content.ReadAsAsync<TResult>();
                 }
             }
             catch (Exception ex)
