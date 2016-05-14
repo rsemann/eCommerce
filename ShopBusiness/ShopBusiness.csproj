@@ -55,6 +55,7 @@
     <Compile Include="Entities\CustomerOrder.cs" />
     <Compile Include="Entities\OrderArticle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TemporaryData\CartArticleTemporary.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
