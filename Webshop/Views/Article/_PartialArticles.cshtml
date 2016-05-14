@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Shop.Models.ArticleModel>
+
+@{
+    Layout = null;
+}
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            <a class="btn" data-url="@Url.Action("Details")" style="cursor: pointer" onclick="showModal(this, @item.Id);">
+                <span class="glyphicon glyphicon-search"></span>
+            </a>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Value)
+        </td>
+        <td>
+            @Html.TextBoxFor(modelItem => item.Quantity, new { id = "article-" + item.Id, type = "number", min = 1 })
+        </td>
+        <td>
+            <a href="#" class="btn btn-success" data-url="@Url.Action("AddArticle", "Cart")" style="cursor: pointer" onclick="javascript:addCart(this, @item.Id);">
+                <span class="glyphicon glyphicon-shopping-cart"></span>Add to cart
+            </a>
+        </td>
+    </tr>
+}
