@@ -10,9 +10,9 @@ namespace ShopBusiness.Entities
 {
     public class CustomerOrder : BaseEntity
     {
-        [ForeignKey("CustomerId")]
+        
         public int CustomerId { get; set; }
-
+        [ForeignKey("CustomerId")]
         public Customer Customer { get; set; }
 
         public float SubTotal { get; set; }

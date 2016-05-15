@@ -45,21 +45,36 @@ namespace Shop.Repository.Repositories
             }
         }
 
-        public void Add(CartDTO item)
+        public int Add(CartDTO item)
         {
             try
             {
                 using (var context = new ShopDataContext())
-                {
+                {   
                     var order = new CustomerOrder
                     {
-                        CustomerId = 0,
+                        CustomerId = 1,
                         SubTotal = item.SubTotal,
                         TotalVAT = item.TotalVAT,
                         Total = item.Total
                     };
                     context.CustomerOrder.Add(order);
+
+                    foreach (var articleDto in item.ArticleDtos)
+                    {
+                        var article = new OrderArticle()
+                        {
+                            ArticleId = articleDto.ArticleId,
+                            Order = order,
+                            Quantity = articleDto.ArticleQuantity,
+                            Total = articleDto.ArticleTotal
+                        };
+
+                        context.OrderArticle.Add(article);
+                    }
                     context.SaveChanges();
+
+                    return order.Id;
                 }
             }
             catch (Exception ex)

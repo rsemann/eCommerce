@@ -29,7 +29,7 @@ namespace Shop.Repository.Repositories
             return _articles.FirstOrDefault(a => a.ArticleId == articleId);
         }
 
-        public void Add(ArticleDTO item)
+        public int Add(ArticleDTO item)
         {
             throw new NotImplementedException();
         }

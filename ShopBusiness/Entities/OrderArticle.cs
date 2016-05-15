@@ -10,9 +10,9 @@ namespace ShopBusiness.Entities
 {
     public class OrderArticle : BaseEntity
     {
-        [ForeignKey("OrderId")]
+        
         public int OrderId { get; set; }
-
+        [ForeignKey("OrderId")]
         public CustomerOrder Order { get; set; }
 
         public int ArticleId { get; set; }

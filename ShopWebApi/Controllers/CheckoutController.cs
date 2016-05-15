@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using Shop.Dto;
 using Shop.Repository.Interfaces;
+using ShopBusiness.TemporaryData;
 
 namespace ShopWebApi.Controllers
 {
@@ -21,8 +22,9 @@ namespace ShopWebApi.Controllers
         [HttpPost]
         public IHttpActionResult ConfirmCheckout(CartDTO cart)
         {
-            _repository.Add(cart);
-            return Ok();
+            var id = _repository.Add(cart);
+            new CartArticleTemporary().CleanCart();
+            return Ok(id);
         }
     }
 }

@@ -63,8 +63,9 @@ namespace Webshop.Controllers
         public async Task<ActionResult> ConfirmCheckout()
         {
             var cart = WebApiClient<CartDTO>.Get("api/articlecart");
-            var post = await WebApiClient<CartDTO>.Post<StatusCartDTO>("api/checkout", cart);
-            return null;
+            var orderId = await WebApiClient<CartDTO>.Post<int>("api/checkout", cart);
+            //await WebApiClient<CartDTO>.Get()<int>("api/order", orderId);
+            return View();
         }
     }
 }

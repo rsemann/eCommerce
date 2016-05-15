@@ -10,7 +10,7 @@ namespace Shop.Repository.Interfaces
     {
         IEnumerable<T> GetAll();
         T GetById(int id);
-        void Add(T item);
+        int Add(T item);
         void Delete(int id);
         void Update(T item);
     }

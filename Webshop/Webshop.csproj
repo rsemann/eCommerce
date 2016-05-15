@@ -245,6 +245,7 @@
     <Content Include="Views\Cart\Checkout.cshtml" />
     <Content Include="Views\Article\_PartialArticles.cshtml" />
     <Content Include="Views\Cart\_PartialCheckout.cshtml" />
+    <Content Include="Views\Cart\ConfirmCheckout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
