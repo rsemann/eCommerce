@@ -9,7 +9,7 @@ namespace ShopBusiness.TemporaryData
 {
     public class CartArticleTemporary
     {
-        private static List<ArticleDTO> _cartArticles= new List<ArticleDTO>();
+        private static List<ArticleDTO> _cartArticles = new List<ArticleDTO>();
 
         public void CleanCart()
         {
@@ -18,27 +18,51 @@ namespace ShopBusiness.TemporaryData
 
         public StatusCartDTO AddArticle(ArticleDTO article)
         {
-            var status = new StatusCartDTO();
-            if (_cartArticles.Exists(a => a.ArticleId == article.ArticleId))
+            try
             {
-                _cartArticles[article.ArticleId] = article;
-                status.Message = "Article was already on the cart. Quantity updated!";
-                status.TypeMessage = "info";
-            }
-            else
-            {
-                _cartArticles.Add(article);
-                status.Message = "Article added to the cart!";
-                status.TypeMessage = "success";
-            }
+                var status = new StatusCartDTO();
+                if (_cartArticles.Exists(a => a.ArticleId == article.ArticleId))
+                {
+                    var cartArticle = _cartArticles.FirstOrDefault(a => a.ArticleId == article.ArticleId);
+                    cartArticle.ArticleQuantity = article.ArticleQuantity;
+                    status.Message = "Article was already on the cart. Quantity updated!";
+                    status.TypeMessage = "info";
+                }
+                else
+                {
+                    _cartArticles.Add(article);
+                    status.Message = "Article added to the cart!";
+                    status.TypeMessage = "success";
+                }
 
-            status.TotalArticles = _cartArticles.Count;
-            return status;
+                status.TotalArticles = _cartArticles.Count;
+                return status;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public List<ArticleDTO> GetCartArticles()
         {
             return _cartArticles;
+        }
+
+        public void RemoveArticle(int id)
+        {
+            try
+            {
+                if (_cartArticles.Exists(a => a.ArticleId == id))
+                {
+                    var cartArticle = _cartArticles.FirstOrDefault(a => a.ArticleId == id);
+                    _cartArticles.Remove(cartArticle);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }
