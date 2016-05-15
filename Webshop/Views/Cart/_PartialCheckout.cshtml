@@ -1,0 +1,34 @@
+﻿@model Shop.Models.CheckoutModel
+
+@{
+    Layout = null;
+}
+
+@foreach (var item in Model.Articles)
+{
+    <tr>
+        <td>
+            <a class="btn" data-url="@Url.Action("Details","Article")" style="cursor: pointer" onclick="showModal(this, @item.Id);">
+                <span class="glyphicon glyphicon-search"></span>
+            </a>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Value)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            <a class="btn btn-danger" data-url="@Url.Action("RemoveArticle", "Cart")" style="cursor: pointer" onclick="removeCart(this, @item.Id);">
+                <span class="glyphicon glyphicon-shopping-cart"></span>Remove from cart
+            </a>
+        </td>
+    </tr>
+}
+
+<tr><td></td><td></td><td></td><td><strong>SubTotal</strong></td><td>@Model.SubTotal</td></tr>
+<tr><td></td><td></td><td></td><td><strong>Total VAT</strong></td><td>@Model.TotalVAT</td></tr>
+<tr><td></td><td></td><td></td><td><strong>Total</strong></td><td>@Model.Total</td></tr>
