@@ -17,13 +17,13 @@
         <thead>
             <tr>
                 <th style="width: 20px"></th>
-                <th data-sortable="true" data-field="name">
+                <th>
                     @Html.DisplayNameFor(model => model.Name)
                 </th>
-                <th data-sortable="true" data-field="value">
+                <th>
                     @Html.DisplayNameFor(model => model.Value)
                 </th>
-                <th data-sortable="true" data-field="dataCriacao">
+                <th>
                     @Html.DisplayNameFor(model => model.Quantity)
                 </th>
                 <th style="width: 120px"></th>
@@ -31,7 +31,7 @@
         </thead>
         <tbody />
         @{
-            Html.RenderAction("Page", new { pageIndex = 1, pageCount });
+            Html.RenderAction("Page", new { pageIndex = 0, pageCount });
         }
     </table>
     <hr />

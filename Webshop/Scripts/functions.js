@@ -35,8 +35,12 @@ function getArticles(pageIndex, pageCount) {
     });
 }
 
-function addCart(self, articleId) {
-    var quantity = $("#article-" + articleId).val();
+function addCart(self, articleId, detail) {
+    var quantity;
+    if (detail)
+        quantity = $("#article-detail-" + articleId).val();
+    else
+        quantity = $("#article-" + articleId).val();
     $.ajax(
     {
         url: $(self).data("url") + "?id=" + articleId + "&quantity=" + quantity,

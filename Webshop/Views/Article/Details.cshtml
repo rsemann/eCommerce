@@ -40,13 +40,13 @@
         </dt>
 
         <dd>
-           @Html.TextBoxFor(model => model.Quantity, new { id = "article-" + Model.Id, type = "number", min = 1 })
+           @Html.TextBoxFor(model => model.Quantity, new { id = "article-detail-" + Model.Id, type = "number", min = 1, @class = "form-control" })
         </dd>
     </dl>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-    <button class="btn btn-success" data-dismiss="modal" data-url="@Url.Action("AddArticle", "Cart")" style="cursor: pointer" onclick="addCart(this, @Model.Id);return false;">
+    <button class="btn btn-success" data-dismiss="modal" data-url="@Url.Action("AddArticle", "Cart")" style="cursor: pointer" onclick="addCart(this, @Model.Id, true);return false;">
         <span class="glyphicon glyphicon-shopping-cart"></span>Add to cart
     </button>
 </div>

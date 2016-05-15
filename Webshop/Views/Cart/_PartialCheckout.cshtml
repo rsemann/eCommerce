@@ -29,6 +29,6 @@
     </tr>
 }
 
-<tr><td></td><td></td><td></td><td><strong>SubTotal</strong></td><td>@Model.SubTotal</td></tr>
-<tr><td></td><td></td><td></td><td><strong>Total VAT</strong></td><td>@Model.TotalVAT</td></tr>
-<tr><td></td><td></td><td></td><td><strong>Total</strong></td><td>@Model.Total</td></tr>
+<tr><td></td><td></td><td></td><td><strong>SubTotal</strong></td><td>@Model.SubTotal.ToString("##.##")</td></tr>
+<tr><td></td><td></td><td></td><td><strong>Total VAT</strong></td><td>@Model.TotalVAT.ToString("##.##")</td></tr>
+<tr><td></td><td></td><td></td><td><strong>Total</strong></td><td>@Model.Total.ToString("##.##")</td></tr>
