@@ -32,7 +32,8 @@ namespace Webshop.Controllers
                 Id = a.ArticleId,
                 Name = a.ArticleName,
                 Value = a.ArticleValue,
-                Quantity = 1
+                Quantity = 1,
+                Image = ConfigurationManager.AppSettings["WebApiBaseAddress"] + a.ArticleImage
             }));
 
             ViewBag.PageIndex = pageIndex;

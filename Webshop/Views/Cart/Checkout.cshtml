@@ -7,31 +7,37 @@
 <h2>Checkout</h2>
 <hr />
 
-<div class="container">
+@using (Html.BeginForm("ConfirmCheckout", "Cart"))
+{
+    <div class="container">
 
-    <table class="table table-striped table-condensed" id="articlesCart">
-        <thead>
-            <tr>
-                <th style="width: 20px"></th>
-                <th data-sortable="true" data-field="name">
-                    @Html.DisplayNameFor(model => model.Articles[0].Name)
-                </th>
-                <th data-sortable="true" data-field="value">
-                    @Html.DisplayNameFor(model => model.Articles[0].Value)
-                </th>
-                <th data-sortable="true" data-field="dataCriacao">
-                    @Html.DisplayNameFor(model => model.Articles[0].Quantity)
-                </th>
-                <th style="width: 120px"></th>
-            </tr>
-        </thead>
-        <tbody />
-        @{
-            Html.RenderAction("Checkout");
-        }
-    </table>
-    <hr/>
-    <button class="btn btn-success" data-dismiss="modal" data-url="@Url.Action("AddArticle", "Cart")" style="cursor: pointer">
-        <span class="glyphicon glyphicon-check"></span> Checkout
-    </button>
-</div>
+        <table class="table table-striped table-condensed" id="articlesCart">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Articles[0].Name)
+                    </th>
+                    <th></th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Articles[0].Value)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Articles[0].Quantity)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Articles[0].Total)
+                    </th>
+                    <th style="width: 120px"></th>
+                </tr>
+            </thead>
+            <tbody />
+            @{
+    Html.RenderAction("Checkout");
+            }
+        </table>
+        <hr />
+        <button type="submit" class="btn btn-success">
+            <span class="glyphicon glyphicon-check"></span> Checkout
+        </button>
+    </div>
+}

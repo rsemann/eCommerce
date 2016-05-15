@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Net.Http.Formatting;
+using System.Windows.Media;
 
 namespace Webshop
 {
@@ -81,6 +82,23 @@ namespace Webshop
             }
         }
 
+        public static async Task<TResult> Delete<TResult>(string uri)
+        {
+            try
+            {
+                using (var client = GetClient())
+                {
+                    var response = await client.DeleteAsync(uri);
+                    response.EnsureSuccessStatusCode();
+
+                    return await response.Content.ReadAsAsync<TResult>();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
         public static async Task<TResult> Post<TResult>(string uri, T content)
         {

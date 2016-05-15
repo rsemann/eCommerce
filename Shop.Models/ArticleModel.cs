@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Shop.Models
 {
@@ -20,6 +16,8 @@ namespace Shop.Models
 
         [Range(1, Int32.MaxValue)]
         public int Quantity { get; set; }
+
+        public float Total { get; set; }
 
         public string Image { get; set; }
     }

@@ -10,6 +10,8 @@ namespace Shop.Dto
     {
         public int OrderArticleId { get; set; }
 
+        public int OrderArticleXmlId { get; set; }
+
         public int OrderArticleCustomerOrderId { get; set; }
 
         public int OrderArticleQuantity { get; set; }

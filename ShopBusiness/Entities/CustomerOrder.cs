@@ -15,10 +15,10 @@ namespace ShopBusiness.Entities
 
         public Customer Customer { get; set; }
 
-        public long SubTotal { get; set; }
+        public float SubTotal { get; set; }
 
-        public long TotalVAT { get; set; }
+        public float TotalVAT { get; set; }
 
-        public long Total { get; set; }
+        public float Total { get; set; }
     }
 }

@@ -18,6 +18,8 @@ namespace Shop.Dto
 
         public int ArticleQuantity { get; set; }
 
+        public float ArticleTotal { get; set; }
+
         public string ArticleImage { get; set; }
     }
 }

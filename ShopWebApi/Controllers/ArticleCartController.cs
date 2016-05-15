@@ -20,10 +20,10 @@ namespace ShopWebApi.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult GetCartArticles()
+        public IHttpActionResult GetCart()
         {
-            var articles = new CartArticleTemporary().GetCartArticles();
-            return Ok(articles);
+            var cart = new CartArticleTemporary().GetCart();
+            return Ok(cart);
         }
 
         [HttpDelete]

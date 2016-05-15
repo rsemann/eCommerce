@@ -8,18 +8,19 @@
 {
     <tr>
         <td>
-            <a class="btn" data-url="@Url.Action("Details","Article")" style="cursor: pointer" onclick="showModal(this, @item.Id);">
-                <span class="glyphicon glyphicon-search"></span>
-            </a>
+            @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            <img src="@item.Image" alt="article" height="56" width="56" />
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Value)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total)
         </td>
         <td>
             <a class="btn btn-danger" data-url="@Url.Action("RemoveArticle", "Cart")" style="cursor: pointer" onclick="removeCart(this, @item.Id);">
@@ -29,6 +30,6 @@
     </tr>
 }
 
-<tr><td></td><td></td><td></td><td><strong>SubTotal</strong></td><td>@Model.SubTotal.ToString("##.##")</td></tr>
-<tr><td></td><td></td><td></td><td><strong>Total VAT</strong></td><td>@Model.TotalVAT.ToString("##.##")</td></tr>
-<tr><td></td><td></td><td></td><td><strong>Total</strong></td><td>@Model.Total.ToString("##.##")</td></tr>
+<tr><td></td><td></td><td></td><td><strong>SubTotal</strong></td><td>@Model.SubTotal.ToString("##.00")</td><td></td></tr>
+<tr><td></td><td></td><td></td><td><strong>Total VAT</strong></td><td>@Model.TotalVAT.ToString("##.00")</td><td></td></tr>
+<tr><td></td><td></td><td></td><td><strong>Total</strong></td><td>@Model.Total.ToString("##.00")</td><td></td></tr>

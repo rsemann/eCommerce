@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -21,18 +22,20 @@ namespace Webshop.Controllers
 
         public ActionResult Checkout()
         {
-            IEnumerable<ArticleDTO> articlesDto = WebApiClient<IEnumerable<ArticleDTO>>.Get("api/articlecart");
+            CartDTO cart = WebApiClient<CartDTO>.Get("api/articlecart");
             var checkout = new CheckoutModel();
-            articlesDto.ForEach(a => checkout.Articles.Add(new ArticleModel
+            cart.ArticleDtos.ForEach(a => checkout.Articles.Add(new ArticleModel
             {
                 Id = a.ArticleId,
                 Name = a.ArticleName,
                 Value = a.ArticleValue,
-                Quantity = a.ArticleQuantity
+                Quantity = a.ArticleQuantity,
+                Total = a.ArticleTotal,
+                Image = ConfigurationManager.AppSettings["WebApiBaseAddress"] + a.ArticleImage
             }));
-            checkout.SubTotal = checkout.Articles.Sum(a => (a.Value * a.Quantity));
-            checkout.TotalVAT = (checkout.SubTotal * 19) / 100;
-            checkout.Total = checkout.SubTotal + checkout.TotalVAT;
+            checkout.SubTotal = cart.SubTotal;
+            checkout.TotalVAT = cart.TotalVAT;
+            checkout.Total = cart.Total;
             return View("_PartialCheckout", checkout);
         }
 
@@ -53,8 +56,15 @@ namespace Webshop.Controllers
 
         public int TotalArticlesCart()
         {
-            var articles = WebApiClient<List<ArticleDTO>>.Get("api/articlecart");
-            return articles.Count;
+            var cart = WebApiClient<CartDTO>.Get("api/articlecart");
+            return cart.ArticleDtos.Count;
+        }
+
+        public async Task<ActionResult> ConfirmCheckout()
+        {
+            var cart = WebApiClient<CartDTO>.Get("api/articlecart");
+            var post = await WebApiClient<CartDTO>.Post<StatusCartDTO>("api/checkout", cart);
+            return null;
         }
     }
 }
