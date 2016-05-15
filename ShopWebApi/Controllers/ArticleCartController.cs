@@ -25,5 +25,12 @@ namespace ShopWebApi.Controllers
             var articles = new CartArticleTemporary().GetCartArticles();
             return Ok(articles);
         }
+
+        [HttpDelete]
+        public IHttpActionResult RemoveArticleCart(int id)
+        {
+            new CartArticleTemporary().RemoveArticle(id);
+            return Ok();
+        }
     }
 }
