@@ -63,6 +63,23 @@ namespace Webshop
             }
         }
 
+        public static async Task Delete(string uri)
+        {
+            try
+            {
+                using (var client = GetClient())
+                {
+                    var response = await client.DeleteAsync(uri);
+                    response.EnsureSuccessStatusCode();
+
+                    await response.Content.ReadAsStringAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
 
         public static async Task<TResult> Post<TResult>(string uri, T content)

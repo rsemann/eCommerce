@@ -13,6 +13,12 @@ namespace Webshop.Controllers
     public class CartController : Controller
     {
         //[Authorize]
+        public ActionResult Index()
+        {
+            var checkout = new CheckoutModel();
+            return View("Checkout", checkout);
+        }
+
         public ActionResult Checkout()
         {
             IEnumerable<ArticleDTO> articlesDto = WebApiClient<IEnumerable<ArticleDTO>>.Get("api/articlecart");
@@ -24,17 +30,25 @@ namespace Webshop.Controllers
                 Value = a.ArticleValue,
                 Quantity = a.ArticleQuantity
             }));
-            checkout.SubTotal = checkout.Articles.Sum(a => (a.Value  *a.Quantity));
-            checkout.TotalVAT = checkout.Articles.Sum(a => (a.Value * 19)/100);
+            checkout.SubTotal = checkout.Articles.Sum(a => (a.Value * a.Quantity));
+            checkout.TotalVAT = (checkout.SubTotal * 19) / 100;
             checkout.Total = checkout.SubTotal + checkout.TotalVAT;
-            return View(checkout);
+            return View("_PartialCheckout", checkout);
         }
 
         // GET: Cart
         public async Task<ActionResult> AddArticle(int id, int quantity)
         {
-            var post = await  WebApiClient<ArticleDTO>.Post<StatusCartDTO>("api/articlecart", new ArticleDTO { ArticleId = id, ArticleQuantity = quantity });
+            var articleDto = WebApiClient<ArticleDTO>.Get(string.Format("api/article/{0}", id));
+            articleDto.ArticleQuantity = quantity;
+            var post = await WebApiClient<ArticleDTO>.Post<StatusCartDTO>("api/articlecart", articleDto);
             return Json(post, JsonRequestBehavior.AllowGet); ;
+        }
+
+        public async Task<ActionResult> RemoveArticle(int id)
+        {
+            await WebApiClient<ArticleDTO>.Delete(string.Format("api/articlecart/{0}", id));
+            return Checkout();
         }
 
         public int TotalArticlesCart()

@@ -41,6 +41,8 @@ function addCart(self, articleId) {
     {
         url: $(self).data("url") + "?id=" + articleId + "&quantity=" + quantity,
         type: "GET",
+        traditional: true,
+        contentType: "application/json",
         cache: false,
         success: function (result) {
             showalert(result.Message, result.TypeMessage);
@@ -51,6 +53,26 @@ function addCart(self, articleId) {
         }
     });
 }
+
+function removeCart(self, articleId) {
+    $.ajax(
+    {
+        url: $(self).data("url") + "?id=" + articleId,
+        type: "GET",
+        traditional: true,
+        contentType: "application/json",
+        cache: false,
+        success: function (result) {
+            showalert("Article removed!", "success");
+            $("#articlesCart > tbody").html(result);
+            totalCart();
+        },
+        error: function (error) {
+            showalert(error.statusText, "error");
+        }
+    });
+}
+
 
 function totalCart() {
     $.ajax(

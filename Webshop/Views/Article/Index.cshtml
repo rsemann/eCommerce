@@ -3,6 +3,7 @@
 @{
     int pageIndex = ViewBag.pageIndex;
     int pageCount = ViewBag.pageCount;
+    Layout = null;
 }
 
 <h2>Articles</h2>
@@ -29,19 +30,22 @@
             </tr>
         </thead>
         <tbody />
+        @{
+            Html.RenderAction("Page", new { pageIndex = 1, pageCount });
+        }
     </table>
     <hr />
     <div>
         @for (var i = 0; i < pageCount; i++)
         {
-            <a class="btn" id="page-@i" onclick="javascript:getArticles(@i, @pageCount);">@(i + 1)</a>
+            if (i == pageIndex)
+            {
+                <a class="btn btn-info" id="page-@i" onclick="getArticles(@i, @pageCount);">@(i + 1)</a>
+            }
+            else
+            {
+                <a class="btn btn-default" id="page-@i" onclick="getArticles(@i, @pageCount);">@(i + 1)</a>
+            }
         }
     </div>
 </div>
-
-@section Scripts
-{
-    <script>
-        getArticles(0,@pageCount);
-    </script>
-}
