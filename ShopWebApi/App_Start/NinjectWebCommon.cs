@@ -71,6 +71,7 @@ namespace ShopWebApi.App_Start
         {
             kernel.Bind<IRepository<ArticleDTO>>().To<ArticleXmlRepository>();
             kernel.Bind<IRepository<CartDTO>>().To<OrderRepository>();
+            kernel.Bind<IRepository<CustomerDTO>>().To<CustomerRepository>();
         }        
     }
 }
