@@ -23,5 +23,8 @@ namespace Shop.Dto
         public string CustomerCity { get; set; }
 
         public string CustomerEmail { get; set; }
+
+        public string CustomerPassword { get; set; }
     }
 }
+
