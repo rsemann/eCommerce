@@ -22,7 +22,7 @@ namespace Webshop.Controllers
 
         public ActionResult Checkout()
         {
-            CartDTO cart = WebApiClient<CartDTO>.Get("api/articlecart");
+            CartDTO cart = new WebApiClient<CartDTO>().Get("api/articlecart");
             var checkout = new CheckoutModel();
             cart.ArticleDtos.ForEach(a => checkout.Articles.Add(new ArticleModel
             {
@@ -42,28 +42,28 @@ namespace Webshop.Controllers
         // GET: Cart
         public async Task<ActionResult> AddArticle(int id, int quantity)
         {
-            var articleDto = WebApiClient<ArticleDTO>.Get(string.Format("api/article/{0}", id));
+            var articleDto = new WebApiClient<ArticleDTO>().Get(string.Format("api/article/{0}", id));
             articleDto.ArticleQuantity = quantity;
-            var post = await WebApiClient<ArticleDTO>.Post<StatusCartDTO>("api/articlecart", articleDto);
+            var post = await new WebApiClient<ArticleDTO>().Post<StatusCartDTO>("api/articlecart", articleDto);
             return Json(post, JsonRequestBehavior.AllowGet); ;
         }
 
         public async Task<ActionResult> RemoveArticle(int id)
         {
-            await WebApiClient<ArticleDTO>.Delete(string.Format("api/articlecart/{0}", id));
+            await new WebApiClient<ArticleDTO>().Delete(string.Format("api/articlecart/{0}", id));
             return Checkout();
         }
 
         public int TotalArticlesCart()
         {
-            var cart = WebApiClient<CartDTO>.Get("api/articlecart");
+            var cart = new WebApiClient<CartDTO>().Get("api/articlecart");
             return cart.ArticleDtos.Count;
         }
 
         public async Task<ActionResult> ConfirmCheckout()
         {
-            var cart = WebApiClient<CartDTO>.Get("api/articlecart");
-            var orderId = await WebApiClient<CartDTO>.Post<int>("api/checkout", cart);
+            var cart = new WebApiClient<CartDTO>().Get("api/articlecart");
+            var orderId = await new WebApiClient<CartDTO>().Post<int>("api/checkout", cart);
             //await WebApiClient<CartDTO>.Get()<int>("api/order", orderId);
             return View();
         }

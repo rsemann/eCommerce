@@ -12,8 +12,9 @@ using System.Windows.Media;
 
 namespace Webshop
 {
-    public static class WebApiClient<T>
+    public class WebApiClient<T>
     {
+        public string AuthToken { get; set; }
         private static string _baseAdress = System.Configuration.ConfigurationManager.AppSettings["WebApiBaseAddress"];
 
         private static HttpClient GetClient()
@@ -25,7 +26,7 @@ namespace Webshop
             return client;
         }
 
-        public static List<T> GetAll(string uri)
+        public List<T> GetAll(string uri)
         {
             try
             {
@@ -45,7 +46,7 @@ namespace Webshop
             
         }
 
-        public static T Get(string uri)
+        public T Get(string uri)
         {
             try
             {
@@ -64,7 +65,7 @@ namespace Webshop
             }
         }
 
-        public static async Task Delete(string uri)
+        public async Task Delete(string uri)
         {
             try
             {
@@ -82,7 +83,7 @@ namespace Webshop
             }
         }
 
-        public static async Task<TResult> Delete<TResult>(string uri)
+        public async Task<TResult> Delete<TResult>(string uri)
         {
             try
             {
@@ -100,7 +101,7 @@ namespace Webshop
             }
         }
 
-        public static async Task<TResult> Post<TResult>(string uri, T content)
+        public async Task<TResult> Post<TResult>(string uri, T content)
         {
             try
             {
@@ -116,6 +117,11 @@ namespace Webshop
             {
                 throw new Exception(ex.Message);
             }
+        }
+
+        public async Task<bool> Authenticate(string userName, string password)
+        {
+            return true;
         }
     }
 }
