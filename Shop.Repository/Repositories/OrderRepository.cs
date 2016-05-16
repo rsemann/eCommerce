@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using Shop.Dto;
 using Shop.Repository.Interfaces;
@@ -47,10 +48,11 @@ namespace Shop.Repository.Repositories
 
         public int Add(CartDTO item)
         {
-            try
+            using (var context = new ShopDataContext())
+            using (var transaction = context.Database.BeginTransaction())
             {
-                using (var context = new ShopDataContext())
-                {   
+                try
+                {
                     var order = new CustomerOrder
                     {
                         CustomerId = 1,
@@ -73,13 +75,15 @@ namespace Shop.Repository.Repositories
                         context.OrderArticle.Add(article);
                     }
                     context.SaveChanges();
+                    transaction.Commit();
 
                     return order.Id;
                 }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    throw new Exception(ex.Message);
+                }
             }
         }
 
