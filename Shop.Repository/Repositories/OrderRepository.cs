@@ -55,7 +55,7 @@ namespace Shop.Repository.Repositories
                 {
                     var order = new CustomerOrder
                     {
-                        CustomerId = 1,
+                        CustomerId = item.CustomerId,
                         SubTotal = item.SubTotal,
                         TotalVAT = item.TotalVAT,
                         Total = item.Total

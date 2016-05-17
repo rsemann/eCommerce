@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Shop.Dto;
+using Shop.Models;
 using Shop.Repository.Interfaces;
 using ShopBusiness.DataContext;
 using ShopBusiness.Entities;

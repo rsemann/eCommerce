@@ -13,6 +13,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
+using Shop.Models;
 using ShopWebApi.Models;
 using ShopWebApi.Providers;
 using ShopWebApi.Results;

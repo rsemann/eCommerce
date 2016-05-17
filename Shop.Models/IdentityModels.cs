@@ -1,7 +1,9 @@
-﻿using System.Security.Claims;
+﻿using System.Data.Entity;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using ShopBusiness.Entities;
 
 namespace Shop.Models
 {
@@ -20,7 +22,7 @@ namespace Shop.Models
             : base("ShopConnection")
         {
         }
-
+        
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

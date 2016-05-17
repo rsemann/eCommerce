@@ -7,6 +7,7 @@ namespace Shop.Dto
         public float SubTotal { get; set; }
         public float TotalVAT { get; set; }
         public float Total { get; set; }
+        public int CustomerId { get; set; }
         public List<ArticleDTO> ArticleDtos = new List<ArticleDTO>();
     }
 }

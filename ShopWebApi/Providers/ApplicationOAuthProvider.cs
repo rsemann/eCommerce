@@ -43,10 +43,13 @@ namespace ShopWebApi.Providers
                 return Task.FromResult<object>(null);
             }
 
-            var claims = new List<Claim>();
-            claims.Add(new Claim(ClaimTypes.Name, user.FirstName));
-            claims.Add(new Claim(ClaimTypes.Email, user.Email));
-            claims.Add(new Claim("CustomerId", user.Id.ToString()));
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, user.FirstName),
+                new Claim(ClaimTypes.Email, user.Email),
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim("Title", user.Title)
+            };
 
             var oAuthIdentity = new ClaimsIdentity(claims, OAuthDefaults.AuthenticationType);
             var cookiesIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationType);
