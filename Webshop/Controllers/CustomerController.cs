@@ -1,5 +1,7 @@
 ﻿using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Shop.Dto;
 using Shop.Models;
 
@@ -30,7 +32,7 @@ namespace Webshop.Controllers
                            CustomerZipCode = model.ZipCode
                        };
                 ViewBag.ReturnUrl = returnUrl;
-                await new WebApiClient<CustomerDTO>().Post<int>("api/Customer", customer);
+                await WebApiClient.Obj.Post<CustomerDTO,int>("api/Customer", customer);
 
                 var loginModel = new CustomerLoginModel()
                 {
@@ -79,7 +81,16 @@ namespace Webshop.Controllers
 
         private async Task<bool> ValidateLogin(CustomerLoginModel model)
         {
-            return true;
+            var isValid = await WebApiClient.Obj.Authenticate(model.Email, model.Password);
+
+            if (isValid)
+            {
+                FormsAuthentication.SetAuthCookie(model.Email, false);
+                Response.Cookies.Add(new HttpCookie("AuthToken", WebApiClient.Obj.AuthToken));
+
+            }
+
+            return isValid;
         }
 
         [HttpPost]

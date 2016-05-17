@@ -1,7 +1,7 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(Webshop.Startup))]
+[assembly: OwinStartup("MVCapp", typeof(Webshop.Startup))]
 namespace Webshop
 {
     public partial class Startup

@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
+﻿using System.Configuration;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using Shop.Dto;
 using Shop.Models;
-using WebGrease.Css.Extensions;
 
 namespace Webshop.Controllers
 {
@@ -22,7 +17,7 @@ namespace Webshop.Controllers
 
         public ActionResult Checkout()
         {
-            CartDTO cart = new WebApiClient<CartDTO>().Get("api/articlecart");
+            CartDTO cart = WebApiClient.Obj.Get<CartDTO>("api/articlecart");
             var checkout = new CheckoutModel();
             cart.ArticleDtos.ForEach(a => checkout.Articles.Add(new ArticleModel
             {
@@ -42,28 +37,28 @@ namespace Webshop.Controllers
         // GET: Cart
         public async Task<ActionResult> AddArticle(int id, int quantity)
         {
-            var articleDto = new WebApiClient<ArticleDTO>().Get(string.Format("api/article/{0}", id));
+            var articleDto = WebApiClient.Obj.Get<ArticleDTO>(string.Format("api/article/{0}", id));
             articleDto.ArticleQuantity = quantity;
-            var post = await new WebApiClient<ArticleDTO>().Post<StatusCartDTO>("api/articlecart", articleDto);
+            var post = await WebApiClient.Obj.Post<ArticleDTO,StatusCartDTO>("api/articlecart", articleDto);
             return Json(post, JsonRequestBehavior.AllowGet); ;
         }
 
         public async Task<ActionResult> RemoveArticle(int id)
         {
-            await new WebApiClient<ArticleDTO>().Delete(string.Format("api/articlecart/{0}", id));
+            await WebApiClient.Obj.Delete<ArticleDTO>(string.Format("api/articlecart/{0}", id));
             return Checkout();
         }
 
         public int TotalArticlesCart()
         {
-            var cart = new WebApiClient<CartDTO>().Get("api/articlecart");
+            var cart = WebApiClient.Obj.Get<CartDTO>("api/articlecart");
             return cart.ArticleDtos.Count;
         }
 
         public async Task<ActionResult> ConfirmCheckout()
         {
-            var cart = new WebApiClient<CartDTO>().Get("api/articlecart");
-            var orderId = await new WebApiClient<CartDTO>().Post<int>("api/checkout", cart);
+            var cart = WebApiClient.Obj.Get<CartDTO>("api/articlecart");
+            var orderId = await WebApiClient.Obj.Post<CartDTO,int>("api/checkout", cart);
             //await WebApiClient<CartDTO>.Get()<int>("api/order", orderId);
             return View();
         }

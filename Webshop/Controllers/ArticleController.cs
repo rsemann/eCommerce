@@ -14,7 +14,7 @@ namespace Webshop.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            IEnumerable<ArticleDTO> articlesDto = new WebApiClient<ArticleDTO>().GetAll("api/article");
+            IEnumerable<ArticleDTO> articlesDto = WebApiClient.Obj.GetAll <ArticleDTO>("api/article");
             
             ViewBag.PageIndex = 0;
             ViewBag.PageCount = articlesDto.Count() / 10;
@@ -26,7 +26,7 @@ namespace Webshop.Controllers
         public ActionResult Page(int pageIndex, int pageCount)
         {
             var articles = new List<ArticleModel>();
-            IEnumerable<ArticleDTO> articlesDto = new WebApiClient<ArticleDTO>().GetAll("api/article");
+            IEnumerable<ArticleDTO> articlesDto = WebApiClient.Obj.GetAll<ArticleDTO>("api/article");
             articlesDto.ForEach(a => articles.Add(new ArticleModel
             {
                 Id = a.ArticleId,
@@ -45,7 +45,7 @@ namespace Webshop.Controllers
         [HttpGet]
         public ActionResult Details(int id)
         {
-            var articleDto = new WebApiClient<ArticleDTO>().Get(string.Format("api/article/{0}", id));
+            var articleDto = WebApiClient.Obj.Get<ArticleDTO>(string.Format("api/article/{0}", id));
             var article = new ArticleModel
             {
                 Id = articleDto.ArticleId,
