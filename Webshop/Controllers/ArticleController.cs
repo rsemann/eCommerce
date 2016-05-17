@@ -8,16 +8,26 @@ using WebGrease.Css.Extensions;
 
 namespace Webshop.Controllers
 {
+    [AllowAnonymous]
     public class ArticleController : Controller
     {
         // GET: Article
         [HttpGet]
         public ActionResult Index()
         {
+            var articles = new List<ArticleModel>();
             IEnumerable<ArticleDTO> articlesDto = WebApiClient.Obj.GetAll <ArticleDTO>("api/article");
             
             ViewBag.PageIndex = 0;
             ViewBag.PageCount = articlesDto.Count() / 10;
+            articlesDto.ForEach(a => articles.Add(new ArticleModel
+            {
+                Id = a.ArticleId,
+                Name = a.ArticleName,
+                Value = a.ArticleValue,
+                Quantity = 1,
+                Image = ConfigurationManager.AppSettings["WebApiBaseAddress"] + a.ArticleImage
+            }));
 
             return View(new ArticleModel());
         }

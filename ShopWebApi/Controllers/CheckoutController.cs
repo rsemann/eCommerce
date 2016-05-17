@@ -10,6 +10,7 @@ using ShopBusiness.TemporaryData;
 
 namespace ShopWebApi.Controllers
 {
+    [AllowAnonymous]
     public class CheckoutController : ApiController
     {
         private IRepository<CartDTO> _repository;

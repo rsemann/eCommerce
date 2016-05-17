@@ -1,10 +1,7 @@
-using System.Web.Http;
-using Ninject.Web.WebApi;
 using Shop.Dto;
 using Shop.Repository.Interfaces;
 using Shop.Repository.Repositories;
 
-/*Source http://www.ralbu.com/using-ninject-with-asp-net-web-api-2 */
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(ShopWebApi.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(ShopWebApi.App_Start.NinjectWebCommon), "Stop")]
 
@@ -53,7 +50,6 @@ namespace ShopWebApi.App_Start
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
                 RegisterServices(kernel);
-                    
                 return kernel;
             }
             catch

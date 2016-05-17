@@ -8,13 +8,14 @@ namespace Webshop.Controllers
 {
     public class CartController : Controller
     {
-        //[Authorize]
+        [Authorize]
         public ActionResult Index()
         {
             var checkout = new CheckoutModel();
             return View("Checkout", checkout);
         }
 
+        [Authorize]
         public ActionResult Checkout()
         {
             CartDTO cart = WebApiClient.Obj.Get<CartDTO>("api/articlecart");
@@ -34,6 +35,7 @@ namespace Webshop.Controllers
             return View("_PartialCheckout", checkout);
         }
 
+        [AllowAnonymous]
         // GET: Cart
         public async Task<ActionResult> AddArticle(int id, int quantity)
         {
@@ -43,18 +45,21 @@ namespace Webshop.Controllers
             return Json(post, JsonRequestBehavior.AllowGet); ;
         }
 
+        [Authorize]
         public async Task<ActionResult> RemoveArticle(int id)
         {
             await WebApiClient.Obj.Delete<ArticleDTO>(string.Format("api/articlecart/{0}", id));
             return Checkout();
         }
 
+        [AllowAnonymous]
         public int TotalArticlesCart()
         {
             var cart = WebApiClient.Obj.Get<CartDTO>("api/articlecart");
             return cart.ArticleDtos.Count;
         }
 
+        [Authorize]
         public async Task<ActionResult> ConfirmCheckout()
         {
             var cart = WebApiClient.Obj.Get<CartDTO>("api/articlecart");

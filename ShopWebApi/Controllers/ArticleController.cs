@@ -12,6 +12,7 @@ using Shop.Repository.Interfaces;
 
 namespace ShopWebApi.Controllers
 {
+    [AllowAnonymous]
     public class ArticleController : ApiController
     {
         private IRepository<ArticleDTO> _repository;

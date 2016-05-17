@@ -7,6 +7,7 @@ using Shop.Models;
 
 namespace Webshop.Controllers
 {
+    [AllowAnonymous]
     public class CustomerController : Controller
     {
         public ActionResult Register(string returnUrl)
@@ -98,6 +99,12 @@ namespace Webshop.Controllers
         [Authorize]
         public ActionResult LogOff()
         {
+            FormsAuthentication.SignOut();
+            WebApiClient.Obj.AuthToken = string.Empty;
+            Response.SetCookie(new HttpCookie("AuthToken", string.Empty));
+            Response.Cookies.Remove("AuthToken");
+
+
             return RedirectToAction("Index", "Home");
         }
 

@@ -10,6 +10,7 @@ using ShopBusiness.TemporaryData;
 
 namespace ShopWebApi.Controllers
 {
+    [AllowAnonymous]
     public class ArticleCartController : ApiController
     {
         [HttpPost]
