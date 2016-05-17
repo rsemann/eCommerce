@@ -66,7 +66,7 @@ namespace ShopWebApi.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IRepository<ArticleDTO>>().To<ArticleXmlRepository>();
-            kernel.Bind<IRepository<CartDTO>>().To<OrderRepository>();
+            kernel.Bind<IRepository<CartDTO>>().To<CartRepository>();
             kernel.Bind<IRepository<CustomerDTO>>().To<CustomerRepository>();
         }        
     }

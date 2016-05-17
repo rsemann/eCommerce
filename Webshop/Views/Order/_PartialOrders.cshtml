@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Shop.Models.OrderModel>
+
+@{
+    Layout = null;
+}
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            <a class="btn" data-url="@Url.Action("Details")" onclick="showModal(this, @item.Id);return false;">
+                <span class="glyphicon glyphicon-search"></span>
+            </a>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubTotal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalVAT)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Total)
+        </td>
+    </tr>
+}

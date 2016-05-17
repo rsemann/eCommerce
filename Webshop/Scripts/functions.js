@@ -35,6 +35,23 @@ function getArticles(pageIndex, pageCount) {
     });
 }
 
+function getOrders(pageIndex, pageCount) {
+    $.ajax(
+    {
+        url: "./Order/Page" + "?pageindex=" + pageIndex + "&pageCount=" + pageCount,
+        type: "GET",
+        cache: false,
+        success: function (result) {
+            $("#ordersGrid > tbody").html(result);
+            $("[id^=page-]").removeClass("btn-info").addClass("btn-default");
+            $("#page-" + pageIndex).removeClass("btn-default").addClass("btn-info");
+        },
+        error: function (error) {
+            showalert(error.statusText, "error");
+        }
+    });
+}
+
 function addCart(self, articleId, detail) {
     var quantity;
     if (detail)

@@ -57,6 +57,7 @@
     <Compile Include="CustomerLoginModel.cs" />
     <Compile Include="CustomerModel.cs" />
     <Compile Include="IdentityModels.cs" />
+    <Compile Include="OrderModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

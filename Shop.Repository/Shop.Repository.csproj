@@ -64,6 +64,7 @@
     <Compile Include="Repositories\ArticleXmlRepository.cs" />
     <Compile Include="Repositories\CustomerAuth.cs" />
     <Compile Include="Repositories\CustomerRepository.cs" />
+    <Compile Include="Repositories\CartRepository.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />
   </ItemGroup>
   <ItemGroup>

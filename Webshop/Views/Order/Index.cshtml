@@ -1,0 +1,53 @@
+﻿@model Shop.Models.OrderModel
+
+@{
+    int pageIndex = ViewBag.pageIndex;
+    int pageCount = ViewBag.pageCount;
+    Layout = null;
+}
+
+<h2>Orders</h2>
+<hr />
+
+<div class="container">
+    @Html.Hidden("pageCount", pageCount)
+    @Html.Hidden("pageIndex", pageIndex)
+
+    <table class="table table-striped table-condensed" id="ordersGrid">
+        <thead>
+            <tr>
+                <th style="width: 20px"></th>
+                <th>
+                    @Html.DisplayName("Order protocol")
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SubTotal)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TotalVAT)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Total)
+                </th>
+            </tr>
+        </thead>
+        <tbody />
+        @{
+            Html.RenderAction("Page", new { pageIndex = 0, pageCount });
+        }
+    </table>
+    <hr />
+    <div>
+        @for (var i = 0; i < pageCount; i++)
+        {
+            if (i == pageIndex)
+            {
+                <a class="btn btn-info" id="page-@i" onclick="getOrders(@i, @pageCount);">@(i + 1)</a>
+            }
+            else
+            {
+                <a class="btn btn-default" id="page-@i" onclick="getOrders(@i, @pageCount);">@(i + 1)</a>
+            }
+        }
+    </div>
+</div>
