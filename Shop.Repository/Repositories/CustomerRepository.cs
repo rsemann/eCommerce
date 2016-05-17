@@ -36,7 +36,8 @@ namespace Shop.Repository.Repositories
                         FirstName = item.CustomerFirstName,
                         LastName = item.CustomerLastName,
                         Title = item.CustomerTitle,
-                        ZipCode = item.CustomerZipCode
+                        ZipCode = item.CustomerZipCode,
+                        Password = item.CustomerPassword
                     };
                     context.Customer.Add(customer);
 

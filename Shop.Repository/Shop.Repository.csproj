@@ -50,13 +50,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\ICustomer.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ArticleXmlRepository.cs" />
+    <Compile Include="Repositories\CustomerAuth.cs" />
     <Compile Include="Repositories\CustomerRepository.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Shop.Models\Shop.Models.csproj">
+      <Project>{4B7CF4A6-1500-49A5-B16B-B922FE709DB1}</Project>
+      <Name>Shop.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ShopBusiness\ShopBusiness.csproj">
       <Project>{0084E2F4-7141-4556-9024-57612829D064}</Project>
       <Name>ShopBusiness</Name>
