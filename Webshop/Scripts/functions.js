@@ -81,7 +81,7 @@ function removeCart(self, articleId) {
 function totalCart() {
     $.ajax(
     {
-        url: "./Cart/TotalArticlesCart",
+        url: "./../Cart/TotalArticlesCart",
         type: "GET",
         cache: false,
         success: function (result) {
