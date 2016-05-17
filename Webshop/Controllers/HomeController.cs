@@ -8,7 +8,6 @@ using System.Web.Mvc;
 using Newtonsoft.Json;
 using Shop.Dto;
 using WebGrease.Css.Extensions;
-using Webshop.Models;
 
 namespace Webshop.Controllers
 {
