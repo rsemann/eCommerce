@@ -17,8 +17,9 @@ namespace Webshop.Controllers
         // GET: /Order/
         public ActionResult Index()
         {
+            var ordersDto = WebApiClient.Obj.Get<List<CustomerOrderDTO>>("api/order");
             ViewBag.PageIndex = 0;
-            ViewBag.PageCount = 1;
+            ViewBag.PageCount = Math.Ceiling(ordersDto.Count / 10f);
             return View(new OrderModel());
         }
 
