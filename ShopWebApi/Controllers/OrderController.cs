@@ -20,12 +20,19 @@ namespace ShopWebApi.Controllers
             _repository = repository;
         }
 
-        [HttpPost]
+        [HttpGet]
         public IHttpActionResult GetAllByUser()
         {
-            var CustomerId = Convert.ToInt32(User.Identity.GetUserId());
-            var id = _repository.GetById(CustomerId);
-            return Ok(id);
+            var result = _repository.GetAll();
+            int id = Convert.ToInt32(User.Identity.GetUserId());
+            return Ok(result.Where(c => c.CustomerOrderCustomerId == id));
+        }
+
+        [HttpGet]
+        public IHttpActionResult Get(int id)
+        {
+            var result = _repository.GetById(id);
+            return Ok(result);
         }
     }
 }

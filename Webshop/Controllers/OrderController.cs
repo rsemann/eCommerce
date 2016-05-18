@@ -45,7 +45,18 @@ namespace Webshop.Controllers
         [HttpGet]
         public ActionResult Details(int id)
         {
-            return View();
+            CustomerOrderDTO orderDto = WebApiClient.Obj.Get<CustomerOrderDTO>(string.Format("api/order/{0}",id));
+            var orderModel= new OrderModel
+            {
+                Id = orderDto.CustomerOrderId,
+                CustomerId = orderDto.CustomerOrderCustomerId,
+                SubTotal = orderDto.CustomerOrderSubTotal,
+                TotalVAT = orderDto.CustomerOrderTotalVAT,
+                Total = orderDto.CustomerOrderTotal
+            };
+
+            
+            return View(orderModel);
         }
 	}
 }

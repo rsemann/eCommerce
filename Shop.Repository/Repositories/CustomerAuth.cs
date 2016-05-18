@@ -14,17 +14,27 @@ namespace Shop.Repository.Repositories
     {
         public Customer Get(int id)
         {
-            throw new NotImplementedException();
+            using (var context = new ShopDataContext())
+            {
+                return context.Customer.Find(id);
+            }
         }
 
         public List<Customer> GetMany()
         {
-            throw new NotImplementedException();
+            using (var context = new ShopDataContext())
+            {
+                return context.Customer.ToList();
+            }
         }
 
         public Customer Put(Customer customer)
         {
-            throw new NotImplementedException();
+            using (var context = new ShopDataContext())
+            {   
+                context.SaveChanges();
+                return customer;
+            }
         }
 
         public Customer ValidateLogin(CustomerLoginModel loginModel)

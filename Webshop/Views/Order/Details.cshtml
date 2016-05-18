@@ -2,7 +2,47 @@
 
 @{
     ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Modal.cshtml";
 }
 
-<h2>Details</h2>
+
+<div class="modal-body">
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayName("Order protocol")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Sub total")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Total VAT")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalVAT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+    </dl>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</div>
 

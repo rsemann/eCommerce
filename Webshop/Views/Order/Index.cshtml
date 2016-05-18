@@ -3,7 +3,6 @@
 @{
     int pageIndex = ViewBag.pageIndex;
     int pageCount = ViewBag.pageCount;
-    Layout = null;
 }
 
 <h2>Orders</h2>
@@ -21,10 +20,10 @@
                     @Html.DisplayName("Order protocol")
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.SubTotal)
+                    @Html.DisplayName("Sub total")
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.TotalVAT)
+                    @Html.DisplayName("Total VAT")
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Total)

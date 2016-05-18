@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
 using Shop.Dto;
 using Shop.Repository.Interfaces;
 using ShopBusiness.DataContext;
+using ShopBusiness.Entities;
 
 namespace Shop.Repository.Repositories
 {
@@ -13,12 +15,22 @@ namespace Shop.Repository.Repositories
     {
         public IEnumerable<CustomerOrderDTO> GetAll()
         {
-            throw new NotImplementedException();
+            var ordersDto = new List<CustomerOrderDTO>();
+            using (var context = new ShopDataContext())
+            {
+                var orders = context.CustomerOrder.ToList();
+                orders.ForEach(o => ordersDto.Add(CustomerOrderToDto(o)));
+            }
+
+            return ordersDto;
         }
 
         public CustomerOrderDTO GetById(int id)
         {
-            throw new NotImplementedException();
+            using (var context = new ShopDataContext())
+            {
+                return CustomerOrderToDto(context.CustomerOrder.Find(id));
+            }
         }
 
         public int Add(CustomerOrderDTO item)
@@ -34,6 +46,18 @@ namespace Shop.Repository.Repositories
         public void Update(CustomerOrderDTO item)
         {
             throw new NotImplementedException();
+        }
+
+        private CustomerOrderDTO CustomerOrderToDto(CustomerOrder order)
+        {
+            return new CustomerOrderDTO()
+            {
+                CustomerOrderSubTotal = order.SubTotal,
+                CustomerOrderTotalVAT = order.TotalVAT,
+                CustomerOrderTotal = order.Total,
+                CustomerOrderCustomerId = order.CustomerId,
+                CustomerOrderId = order.Id
+            };
         }
     }
 }
