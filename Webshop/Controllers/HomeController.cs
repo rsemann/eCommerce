@@ -21,8 +21,6 @@ namespace Webshop.Controllers
             if (User.Identity.IsAuthenticated && string.IsNullOrEmpty(WebApiClient.Obj.AuthToken))
             {
                 FormsAuthentication.SignOut();
-                Response.Cookies[FormsAuthentication.FormsCookieName].Expires = DateTime.Now.AddYears(-1);
-                Response.Redirect(Request.RawUrl);
                 foreach (var cookie in Request.Cookies.AllKeys)
                 {
                     Request.Cookies.Remove(cookie);
